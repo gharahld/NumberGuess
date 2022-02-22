@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -82,12 +82,14 @@ namespace NumberGuesser
                 // Adding time
                 var date = DateTime.Now;
                 Console.WriteLine(date);
-                // Adding data
+                // Initialize the connection
 
                 SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ghara\Documents\Data.mdf;Integrated Security=True;Connect Timeout=30;");
-               //
+               //creating a command between the sql and c#
                 SqlDataAdapter sda = new SqlDataAdapter("INSERT INTO Leaderboard (Name, Score, Date) VALUES ('" + playerName + "', '" + counter + "', '" + date + "');", con);
+                //prepare a table
                 DataTable dt = new DataTable();
+                //Fill the table
                 sda.Fill(dt);
 
                 // Print success message
